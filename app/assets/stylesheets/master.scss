@@ -37,12 +37,13 @@ body {
 .pagination {
   cursor: pointer;
   height: 28px;
+  margin-top: 5px;
   a, span, em {
     padding: 0.2em 0.5em;
     display: block;
     float: left;
     margin-right: 1px;
-  }
+      }
   .disabled {
     display:none;
 

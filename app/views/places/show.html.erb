@@ -43,10 +43,19 @@
 </div>
 
 <div class="clear"></div>
+
 <%= simple_form_for @comment, url: place_comments_path(@place) do |f| %>
   <%= f.input :message %>
   <%= f.input :rating, as: :select, collection: Comment::RATINGS %>
   <%= f.submit "Add a Comment", class: 'btn btn-primary' %>
+<% end %>
+
+<div class="clear"></div>
+
+<%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
+  <%= f.input :picture %>
+  <%= f.input :caption %>
+  <%= f.submit "Add Photo", class: 'btn btn-primary' %>
 <% end %>
 
 <!-- Button trigger modal -->
@@ -102,6 +111,18 @@
       <% end %>
       <%= comment.message %>
       <small><%= comment.user.email %></small>
+    </blockquote>
+  </div>
+<% end %>
+</div>
+
+
+<div class="row">
+<% @place.photos.each do |photo| %>
+   <div class="col-12 col-sm-4">
+    <blockquote>
+      <b><%= photo.caption %></b> -
+       <%= image_tag photo.picture.url %> 
     </blockquote>
   </div>
 <% end %>
